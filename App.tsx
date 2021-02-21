@@ -1,17 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { ThemeProvider } from 'styled-components/native'
+import AppLoading from 'expo-app-loading';
+import { useFonts, Ubuntu_400Regular } from '@expo-google-fonts/ubuntu';
 
-import { dark, ligth   } from './src/theme'
-import { AuthStack, DashboardTabs } from './src/routes'
+import { AuthStack } from './src/routes'
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    Ubuntu_400Regular,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
-    <ThemeProvider theme={dark} >
-      <NavigationContainer>
-        <AuthStack />
-      </NavigationContainer>
-    </ThemeProvider>
+    <NavigationContainer>
+      <AuthStack />
+    </NavigationContainer>
   );
 }

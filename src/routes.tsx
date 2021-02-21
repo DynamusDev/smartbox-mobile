@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
 
-import { Login, DemoPage } from './pages';
+import { Login, Dashboard } from './pages';
 
 const { Navigator, Screen } = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -12,11 +12,12 @@ export function AuthStack() {
   return (
     <Navigator
       screenOptions={{
-        headerShown: false,
+        headerShown: false
       }}
       initialRouteName="login"
     >
       <Screen name="login" component={Login} />
+      <Screen name="demo" component={Dashboard} />
     </Navigator>
   );
 }
@@ -34,9 +35,9 @@ export function DashboardTabs() {
             iconName = 'file-text';
           } else if (route.name === 'Config') {
             iconName = 'settings'
-          }else if (route.name === 'TalkWithUs') {
+          } else if (route.name === 'TalkWithUs') {
             iconName = 'message-square'
-          }else if (route.name === 'Demo') {
+          } else if (route.name === 'Demo') {
             iconName = 'settings'
           }
           return <Feather name={iconName} size={size} color={color} />;
@@ -51,7 +52,7 @@ export function DashboardTabs() {
       }}
     >
       <Tab.Screen name="Home" component={Login} />
-      <Tab.Screen name="Demo" component={DemoPage} />
+      <Tab.Screen name="Demo" component={Dashboard} />
     </Tab.Navigator>
   );
 }
@@ -64,6 +65,7 @@ export function DashboardStack() {
       }}
     >
       <Screen name="first" component={Login} />
+      <Screen name="demo" component={Dashboard} />
     </Navigator>
   );
 }

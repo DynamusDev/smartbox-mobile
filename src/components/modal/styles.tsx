@@ -30,5 +30,5 @@ export const Indicator = styled.TouchableOpacity`
 `;
 
 export const Text = styled.Text`
-  
+  font-family: 'Ubuntu_400Regular'
 `;

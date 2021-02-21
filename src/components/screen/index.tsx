@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, KeyboardAvoidingView } from 'react-native';
+import { StatusBar, KeyboardAvoidingView, Platform } from 'react-native';
 
 import { Container, SafeArea } from './styles';
 
@@ -14,18 +14,18 @@ interface Props {
 
 export function Screen(props: Props) {
   return (
-    <KeyboardAvoidingView behavior='padding' enabled style={{flex: 1, backgroundColor: props.bgColor || '#1e111d' }}>
+    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} enabled style={{ flex: 1, backgroundColor: props.bgColor || '#1e111d' }}>
       {
         !props.hiddeStatusbar ?
           <SafeArea
             style={{
               ...props.style,
-              backgroundColor: props.bgColor || '#1aa48a', 
+              backgroundColor: props.bgColor || '#46e8c9',
             }}
           >
-            <StatusBar 
+            <StatusBar
               barStyle={props.barStyle || 'dark-content'}
-              backgroundColor={props.barColor || '#1e111d'}
+              backgroundColor={props.barColor || '#46e8c9'}
               hidden={props.hiddeStatusbar}
             />
             {props.children}
@@ -34,10 +34,10 @@ export function Screen(props: Props) {
           <Container
             style={{
               ...props.style,
-              backgroundColor: props.bgColor || '#1e111d', 
+              backgroundColor: props.bgColor || '#1e111d',
             }}
           >
-            <StatusBar 
+            <StatusBar
               barStyle={props.barStyle || 'dark-content'}
               backgroundColor={props.barColor || 'transparent'}
               hidden={props.hiddeStatusbar}

@@ -11,29 +11,29 @@ interface Props {
   style?: React.CSSProperties
 }
 
-export function Content(props: Props){
+export function Content(props: Props) {
   return (
     <>
       {
-        props.scroolable ? 
-        <Scroll
-          contentContainerStyle={{...props.style ,flexDirection: props.flexDirection || 'column',}}
-          style={{
-            backgroundColor: props.bgColor || 'transparent',
-          }}
-        >
-          {props.children}
-        </Scroll>
-          : 
+        props.scroolable ?
+          <Scroll
+            contentContainerStyle={{ ...props.style, flexDirection: props.flexDirection || 'column', }}
+            style={{
+              backgroundColor: props.bgColor || 'transparent',
+            }}
+          >
+            {props.children}
+          </Scroll>
+          :
           <Container
-              style={{
-                ...props.style,
-                backgroundColor: props.bgColor || 'transparent',
-                flexDirection: props.flexDirection || 'column',
-              }}
-            >
-              {props.children}
-            </Container>
+            style={{
+              ...props.style,
+              backgroundColor: props.bgColor || 'transparent',
+              flexDirection: props.flexDirection || 'column',
+            }}
+          >
+            {props.children}
+          </Container>
       }
     </>
   )

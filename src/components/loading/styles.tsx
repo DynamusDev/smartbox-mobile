@@ -15,4 +15,5 @@ export const Container = styled(SafeAreaView)`
 export const Text = styled.Text`
   color: #FFF;
   font-size: 20px;
+  font-family: 'Ubuntu_400Regular'
 `;

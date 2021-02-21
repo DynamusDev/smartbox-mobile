@@ -28,7 +28,7 @@ export function Input(props: Props) {
       label={translate(props.labelTx) || props.label}
       value={props.value}
       onChangeText={props.onChangeText}
-      mode={props.mode || 'flat'}
+      mode={props.mode || 'outlined'}
       left={props.left}
       right={props.right}
       disabled={props.disabled}
