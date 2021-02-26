@@ -3,8 +3,9 @@ import { Alert } from 'react-native';
 import { api } from '../../services/api';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
+import colors from '../../theme/colors'
 
-import { Container, Input, Image } from './styles';
+import { Container, Input, Image, Row, Text } from './styles';
 import { Screen, Button } from '../../components';
 
 export function Login() {
@@ -16,7 +17,7 @@ export function Login() {
   useEffect(() => {
     async function getUser() {
       try {
-        const dataUser = await AsyncStorage.getItem('user') || ''
+        const dataUser = await AsyncStorage.getItem('sb@user')
         if (dataUser !== null) {
           navigation.navigate('demo')
         }
@@ -41,8 +42,8 @@ export function Login() {
         })
         if (response.data.status === 201) {
           setLoading(false)
-          await AsyncStorage.setItem('user', JSON.stringify(response.data.user))
-          await AsyncStorage.setItem('token', response.data.token)
+          await AsyncStorage.setItem('sb@user', JSON.stringify(response.data.user))
+          await AsyncStorage.setItem('sb@token', response.data.token)
           navigation.navigate('demo')
         } else {
           setLoading(false)
@@ -55,13 +56,16 @@ export function Login() {
   }
 
   return (
-    <Screen hiddeStatusbar={false} barStyle='light-content' bgColor='#46e8c9' barColor='#46e8c9' >
+    <Screen hiddeStatusbar={false} barStyle='light-content' bgColor={colors.primary} barColor={colors.primary} >
       <Container >
-        <Image source={require('./logo.png')} resizeMode='contain' />
+        <Image source={require('./logo2.png')} resizeMode='contain' />
         <Input multiline={false} value={email} onChangeText={setEmail} keyboardType='email-address' autoCapitalize='none' placeholder='Email' />
         <Input secureTextEntry value={password} onChangeText={setPassword} multiline={false} placeholder='Senha' autoCapitalize='none' />
-        <Button type='common' onPress={handleLogin} loading={loading} text='IR' bgColor='#000' />
-        <Button type='common' onPress={() => { }} text='Esqueci minha senha' bgColor='#46e8c9' />
+        <Button type='common' onPress={handleLogin} loading={loading} text='Login' bgColor='#000' />
+        <Row>
+          <Button type='common' onPress={() => { navigation.navigate('signup') }} text='Cadastrar' bgColor={colors.primary} />
+          <Button type='common' onPress={() => { navigation.navigate('forgot') }} text='Esqueci minha senha' bgColor={colors.primary} />
+        </Row>
       </Container>
     </Screen>
   );

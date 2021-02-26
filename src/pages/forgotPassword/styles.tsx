@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
-import { TextInput } from 'react-native'
+import { TextInput } from 'react-native';
+import colors from '../../theme/colors';
 
 export const Container = styled.View`
   height: 100%;
@@ -24,12 +25,12 @@ export const Input = styled(TextInput).attrs({})`
   font-size: 20px;
   width: 70%;
   height: 40px;
-  background: rgba(255, 255, 255, 0.7);
+  background: #FFF;
   margin-bottom: 10px;
   border-radius: 10px;
   text-align: center;
   font-size: 22px;
-  font-family: 'Ubuntu_400Regular'
+  font-family: 'Ubuntu_400Regular';
 `;
 
 export const Image = styled.Image`

@@ -30,11 +30,11 @@ export function Dashboard() {
   useEffect(() => {
     async function getUser() {
       try {
-        const dataUser = await AsyncStorage.getItem('user') || ''
+        const dataUser = await AsyncStorage.getItem('sb@user') || ''
         if (dataUser !== null) {
           setUser(JSON.parse(dataUser))
           setName(JSON.parse(dataUser).name.split(' ')[0])
-          setToken(await AsyncStorage.getItem('token') || '')
+          setToken(await AsyncStorage.getItem('sb@token') || '')
 
           const SBS = JSON.parse(dataUser)
           SBS.smartbox.map((item: any) => {
@@ -108,7 +108,7 @@ export function Dashboard() {
     try {
       const response = await api.post('sb/send', {
         sbid: id,
-        value: 256,
+        value: {value: 'ON'},
         user: user.id
       })
     } catch (err) {

@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
 
-import { Login, Dashboard } from './pages';
+import { Login, Dashboard, SignUp, ForgotPassword } from './pages';
 
 const { Navigator, Screen } = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -12,12 +12,15 @@ export function AuthStack() {
   return (
     <Navigator
       screenOptions={{
-        headerShown: false
+        headerShown: false,
+        gestureEnabled: true
       }}
       initialRouteName="login"
     >
       <Screen name="login" component={Login} />
       <Screen name="demo" component={Dashboard} />
+      <Screen name="signup" component={SignUp} />
+      <Screen name="forgot" component={ForgotPassword} />
     </Navigator>
   );
 }
@@ -63,8 +66,9 @@ export function DashboardStack() {
       screenOptions={{
         headerShown: false,
       }}
+      initialRouteName="login"
     >
-      <Screen name="first" component={Login} />
+      <Screen name="login" component={Login} />
       <Screen name="demo" component={Dashboard} />
     </Navigator>
   );
